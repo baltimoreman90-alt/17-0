@@ -192,15 +192,27 @@ body::after{
 @keyframes shine{to{background-position:200% center}}
 .simline{color:var(--muted);font-size:16px;max-width:520px;margin:14px auto 0;line-height:1.35}
 
-.breakdown{margin-top:26px;background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:18px 18px 8px}
-.breakdown h4{font-family:'Anton';font-size:15px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px;text-align:left}
-.bd{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.bd .bk{font-family:'Barlow Condensed';font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;width:120px;text-align:right;color:var(--chalk)}
-.bd .track{flex:1;height:14px;background:#0a0f0c;border-radius:8px;overflow:hidden;position:relative}
-.bd .track i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--turf),var(--turf-bright));width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.breakdown{margin-top:24px;background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.teamrating{display:flex;align-items:center;gap:14px;padding-bottom:14px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.teamrating .trnum{font-family:'Anton';font-size:52px;line-height:.9}
+.teamrating .trlbl{display:flex;flex-direction:column;line-height:1.15}
+.teamrating .trlbl span{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.teamrating .trlbl b{font-family:'Barlow Condensed';font-weight:700;font-size:20px;letter-spacing:.5px}
+.bd{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bd .bk{font-family:'Barlow Condensed';font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;width:104px;text-align:right;color:var(--muted)}
+.bd .track{flex:1;height:9px;background:#0a0f0c;border-radius:6px;overflow:hidden;position:relative}
+.bd .track i{display:block;height:100%;border-radius:6px;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,var(--turf),var(--turf-bright))}
+.bd .pct{font-family:'Anton';font-size:16px;width:30px;text-align:right}
+.bd .phtag{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.bd .phtag.weak{color:var(--red);border:1px solid #5a2a22}
+.bd .phtag.str{color:var(--gold);border:1px solid var(--gold-deep)}
+/* phase rating tiers */
+.rt-elite{color:var(--gold)} i.rt-elite{background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+.rt-great{color:var(--turf-bright)} i.rt-great{background:linear-gradient(90deg,var(--turf),var(--turf-bright))}
+.rt-good{color:var(--chalk)} i.rt-good{background:linear-gradient(90deg,#3a6b4e,var(--turf-bright))}
+.rt-ok{color:var(--muted)} i.rt-ok{background:linear-gradient(90deg,#3a4740,#6f8a79)}
+.rt-weak{color:var(--red)} i.rt-weak{background:linear-gradient(90deg,#8a2c1e,var(--red))}
 .bd .track.weak i{background:linear-gradient(90deg,#8a2c1e,var(--red))}
-.bd .track .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--gold);opacity:.7;border-radius:2px}
-.bd .pct{font-family:'DM Mono';font-size:13px;color:var(--muted);width:42px;text-align:right}
 
 .finalroster{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .frcard{--tc:var(--turf-bright);background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:11px;padding:11px 12px;box-shadow:inset 4px 0 0 var(--tc)}
@@ -368,7 +380,7 @@ body::after{
     <div class="catkey">
       <span><b>OFF</b> Offense</span><span><b>DEF</b> Defense</span><span><b>TRN</b> Trenches</span><span><b>PLY</b> Playmaking</span><span><b>IQ</b> Football IQ</span>
     </div>
-    <p style="margin-top:9px">Your team total is the sum of all 14 starters in each phase. Linemen own the trenches, corners and safeties drive playmaking and defense — a lineup that ignores a phase gets exposed all season.</p>
+    <p style="margin-top:9px">Your team total is the sum of all 14 starters in each phase. Linemen own the trenches, corners and safeties drive playmaking and defense — a lineup that ignores a phase gets exposed all season. The board never tells you who's "best," so trust your own football knowledge.</p>
 
     <h3>4 · The Season Curve</h3>
     <p>Your totals run through a non-linear win projection. Wins get exponentially harder near the top, and <b>your weakest phase caps your ceiling</b> no matter how elite the rest of the team is. To go 17–0 you must draft the best available legend nearly every pick and stay elite in <em>everything</em>.</p>
@@ -656,10 +668,113 @@ const P = [
 ["Minkah Fitzpatrick","S","Steelers","2020s","ballhawking All-Pro",{off:8,def:90,trn:50,ply:92,iq:88}],
 ["Derwin James","S","Chargers","2020s","versatile chess-piece safety",{off:8,def:90,trn:56,ply:90,iq:86}],
 ["Antoine Winfield Jr.","S","Buccaneers","2020s","SB-winning do-it-all safety",{off:8,def:88,trn:52,ply:90,iq:84}],
+// 1960s
+["Sonny Jurgensen","QB","Redskins","1960s","pure passer, surgical accuracy",{off:86,def:5,trn:8,ply:68,iq:86}],
+// 1970s
+["Bob Griese","QB","Dolphins","1970s","brain of the Perfect Season",{off:84,def:5,trn:8,ply:66,iq:88}],
+// 1980s
+["Warren Moon","QB","Oilers","1980s","Run-and-Shoot gunslinger",{off:88,def:5,trn:8,ply:74,iq:86}],
+// 1990s
+["Troy Aikman","QB","Cowboys","1990s","3 rings, dynasty precision",{off:86,def:5,trn:8,ply:66,iq:88}],
+// 2000s
+["Kurt Warner","QB","Cardinals","2000s","grocery-clerk-to-MVP arm",{off:90,def:5,trn:8,ply:72,iq:90}],
+// 2010s
+["Cam Newton","QB","Panthers","2010s","2015 MVP, dual-threat force",{off:88,def:5,trn:8,ply:84,iq:80}],
+// 2020s
+["Lamar Jackson","QB","Ravens","2020s","2× MVP, unguardable runner",{off:90,def:5,trn:8,ply:90,iq:84}],
+// 1960s
+["Leroy Kelly","RB","Browns","1960s","picked up where Jim Brown left off",{off:86,def:10,trn:56,ply:86,iq:62}],
+// 1980s
+["John Riggins","RB","Redskins","1980s","SB XVII MVP, short-yardage hammer",{off:86,def:10,trn:64,ply:80,iq:62}],
+// 1990s
+["Terrell Davis","RB","Broncos","1990s","1998 MVP, 2,008 yds",{off:90,def:10,trn:58,ply:88,iq:64}],
+// 2000s
+["Edgerrin James","RB","Colts","2000s","back-to-back rushing titles",{off:88,def:10,trn:56,ply:88,iq:64}],
+// 2010s
+["Le'Veon Bell","RB","Steelers","2010s","patient, do-everything back",{off:88,def:10,trn:56,ply:90,iq:68}],
+// 2020s
+["Nick Chubb","RB","Browns","2020s","one-cut downhill battering ram",{off:88,def:10,trn:62,ply:84,iq:60}],
+// 1970s
+["Harold Carmichael","WR","Eagles","1970s","6-foot-8 red-zone giant",{off:82,def:8,trn:34,ply:86,iq:66}],
+// 1980s
+["James Lofton","WR","Packers","1980s","deep-threat hall of famer",{off:84,def:8,trn:30,ply:90,iq:68}],
+// 1990s
+["Andre Reed","WR","Bills","1990s","K-Gun yards-after-catch weapon",{off:84,def:8,trn:30,ply:88,iq:68}],
+// 1960s
+["Jackie Smith","TE","Cardinals","1960s","decades as the standard at TE",{off:78,def:12,trn:60,ply:80,iq:66}],
+["Pete Retzlaff","TE","Eagles","1960s","Baron, 1965 MVP candidate",{off:78,def:12,trn:58,ply:80,iq:66}],
+// 1970s
+["Riley Odoms","TE","Broncos","1970s","four-time Pro Bowl mismatch",{off:78,def:12,trn:62,ply:80,iq:66}],
+["Russ Francis","TE","Patriots","1970s","All-Madden athletic tight end",{off:78,def:12,trn:64,ply:78,iq:66}],
+// 1980s
+["Todd Christensen","TE","Raiders","1980s","led NFL in catches twice",{off:82,def:12,trn:58,ply:84,iq:68}],
+["Mark Bavaro","TE","Giants","1980s","bruising two-way tight end",{off:80,def:12,trn:66,ply:80,iq:68}],
+// 1990s
+["Wesley Walls","TE","Panthers","1990s","red-zone matchup nightmare",{off:80,def:12,trn:60,ply:82,iq:66}],
+["Keith Jackson","TE","Eagles","1990s","explosive seam threat",{off:82,def:12,trn:58,ply:84,iq:68}],
+// 2000s
+["Dallas Clark","TE","Colts","2000s","Manning's move tight end",{off:82,def:12,trn:58,ply:84,iq:70}],
+// 2010s
+["Greg Olsen","TE","Panthers","2010s","first 3× 1,000-yd TE",{off:82,def:12,trn:60,ply:84,iq:70}],
+// 2020s
+["Trey McBride","TE","Cardinals","2020s","rising every-down weapon",{off:82,def:12,trn:62,ply:84,iq:70}],
+// 1960s
+["Ron Mix","OL","Chargers","1960s","the Intellectual Assassin",{off:68,def:8,trn:94,ply:40,iq:82}],
+// 1980s
+["Dwight Stephenson","OL","Dolphins","1980s","best center of his era",{off:70,def:8,trn:96,ply:40,iq:86}],
+// 1990s
+["Randall McDaniel","OL","Vikings","1990s","12 straight Pro Bowls at guard",{off:70,def:8,trn:96,ply:42,iq:82}],
+// 1980s
+["Dan Hampton","DL","Bears","1980s","anchor of the '85 Bears front",{off:5,def:90,trn:90,ply:82,iq:72}],
+// 1990s
+["Chris Doleman","DL","Vikings","1990s","150.5 career sacks",{off:5,def:90,trn:84,ply:88,iq:72}],
+// 1960s
+["Chuck Howley","LB","Cowboys","1960s","only SB MVP from losing team",{off:5,def:90,trn:76,ply:86,iq:86}],
+// 1970s
+["Ted Hendricks","LB","Raiders","1970s","the Mad Stork, 4 rings",{off:5,def:92,trn:78,ply:88,iq:86}],
+// 1980s
+["Rickey Jackson","LB","Saints","1980s","Dome Patrol pass-rush terror",{off:5,def:90,trn:80,ply:88,iq:82}],
+// 1990s
+["Cornelius Bennett","LB","Bills","1990s","explosive K-Gun-era LB",{off:5,def:90,trn:80,ply:86,iq:82}],
+// 2000s
+["Zach Thomas","LB","Dolphins","2000s","undersized tackling machine",{off:5,def:92,trn:80,ply:86,iq:90}],
+// 2010s
+["Patrick Willis","LB","49ers","2010s","sideline-to-sideline force",{off:5,def:94,trn:80,ply:90,iq:90}],
+// 2020s
+["Demario Davis","LB","Saints","2020s","ageless do-everything LB",{off:5,def:90,trn:78,ply:86,iq:88}],
+// 1960s
+["Lem Barney","CB","Lions","1960s","7 INT as a rookie",{off:8,def:88,trn:44,ply:90,iq:82}],
+// 1970s
+["Willie Brown","CB","Raiders","1970s","bump-and-run pioneer",{off:8,def:90,trn:48,ply:90,iq:84}],
+// 1980s
+["Frank Minnifield","CB","Browns","1980s","elite Dawg Pound corner",{off:8,def:88,trn:46,ply:88,iq:82}],
+// 1990s
+["Darrell Green","CB","Redskins","1990s","fastest man in football",{off:8,def:92,trn:46,ply:94,iq:86}],
+// 2000s
+["Ronde Barber","CB","Buccaneers","2000s","slot-blitz innovator",{off:8,def:90,trn:52,ply:90,iq:88}],
+// 2010s
+["Aqib Talib","CB","Broncos","2010s","physical shutdown corner",{off:8,def:90,trn:46,ply:90,iq:84}],
+// 2020s
+["Jaire Alexander","CB","Packers","2020s","sticky, ball-hawking corner",{off:8,def:90,trn:44,ply:90,iq:82}],
+// 1960s
+["Johnny Robinson","S","Chiefs","1960s","AFL ball-hawking safety",{off:8,def:88,trn:46,ply:90,iq:84}],
+// 1970s
+["Donnie Shell","S","Steelers","1970s","hard-hitting Steel Curtain DB",{off:8,def:88,trn:52,ply:86,iq:84}],
+// 1980s
+["Deron Cherry","S","Chiefs","1980s","6× Pro Bowl ballhawk",{off:8,def:88,trn:50,ply:88,iq:82}],
+// 1990s
+["Carnell Lake","S","Steelers","1990s","versatile big-hitting safety",{off:8,def:88,trn:52,ply:86,iq:84}],
+// 2000s
+["John Lynch","S","Buccaneers","2000s","intimidating Cover-2 enforcer",{off:8,def:90,trn:56,ply:86,iq:86}],
+// 2010s
+["Harrison Smith","S","Vikings","2010s","do-everything chess piece",{off:8,def:90,trn:52,ply:90,iq:88}],
+// 2020s
+["Budda Baker","S","Cardinals","2020s","heat-seeking missile, All-Pro",{off:8,def:88,trn:50,ply:90,iq:86}],
 ];
 
 // build records
 const PLAYERS = P.map((a,i)=>({id:i,name:a[0],pos:a[1],team:a[2],decade:a[3],stat:a[4],cat:a[5]}));
+
 const DECADES=["1960s","1970s","1980s","1990s","2000s","2010s","2020s"];
 const POSNAME={QB:"Quarterback",RB:"Running Back",WR:"Wide Receiver",TE:"Tight End",OL:"Offensive Line",DL:"Defensive Line",LB:"Linebacker",CB:"Cornerback",S:"Safety"};
 const POSABBR={QB:"QB",RB:"RB",WR:"WR",TE:"TE",OL:"OL",DL:"DL",LB:"LB",CB:"CB",S:"S"};
@@ -670,12 +785,32 @@ const SIDE=p=>OFFPOS.includes(p)?"OFF":"DEF";
 const CATKEYS=["off","def","trn","ply","iq"];
 const CATNAME={off:"Offense",def:"Defense",trn:"Trenches",ply:"Playmaking",iq:"Football IQ"};
 
+/* ---------- phase ratings ----------
+   The raw phase totals all land high (every team is full of legends), so showing them
+   as "% of target" pins every bar near 100. Instead we map each phase total into the
+   range that's actually achievable for the fixed lineup, giving a spread 0-99 rating
+   that shows real strengths and your one weak (ceiling) phase. */
+const PHASE_RANGE=(function(){
+  const lo={},hi={};CATKEYS.forEach(k=>{lo[k]=0;hi[k]=0;});
+  ROSTER_SLOTS.forEach(pos=>{
+    const at=PLAYERS.filter(p=>p.pos===pos);
+    CATKEYS.forEach(k=>{lo[k]+=Math.min(...at.map(p=>p.cat[k]));hi[k]+=Math.max(...at.map(p=>p.cat[k]));});
+  });
+  return {lo,hi};
+})();
+function phaseRating(total,k){
+  const f=(total-PHASE_RANGE.lo[k])/((PHASE_RANGE.hi[k]-PHASE_RANGE.lo[k])||1);
+  return Math.max(0,Math.min(99,Math.round(40+f*59)));
+}
+function ratingTier(r){return r>=90?"rt-elite":r>=80?"rt-great":r>=70?"rt-good":r>=60?"rt-ok":"rt-weak";}
+function ratingWord(r){return r>=90?"Elite roster":r>=82?"Loaded roster":r>=74?"Strong roster":r>=66?"Solid roster":r>=58?"Uneven roster":"Thin roster";}
+
 // per-phase targets calibrated to what a BALANCED 7-man roster can realistically reach.
 // (offense & defense trade off, so single-phase league maxima are unreachable together)
 // per-phase targets calibrated to a balanced 14-man all-time starting lineup
-const TARGET={off:717,def:629,trn:832,ply:1163,iq:1101};
+const TARGET={off:724,def:634,trn:844,ply:1176,iq:1112};
 // win-curve constants (tuned so skilled, balanced drafting can reach 17-0 but rarely)
-const CURVE={lo:0.93,hi:1.01,exp:0.7,cap:1.10};
+const CURVE={lo:0.915,hi:1.00,exp:0.6,cap:1.08};
 
 /* team accent colors — chosen to read clearly on the dark field */
 const TEAMC={
@@ -776,11 +911,9 @@ function reSpinEra(){
   updateSkipBtns();
 }
 function revealChoices(){
-  const pool=eligible(state.curDec,state.curPos)
-    .slice().sort((a,b)=>{
-      const sa=CATKEYS.reduce((s,k)=>s+a.cat[k],0), sb=CATKEYS.reduce((s,k)=>s+b.cat[k],0);
-      return sb-sa;
-    });
+  // present choices in random order in both modes — no ranking, so good players aren't steered to the top
+  const pool=eligible(state.curDec,state.curPos).slice();
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
   $("#prompt").innerHTML="Draft a <b>"+state.curDec+" "+POSNAME[state.curPos]+"</b>"+slotTag(state.curPos);
   $("#prompt").style.color="var(--muted)";
   const wrap=$("#choices"); wrap.innerHTML="";
@@ -797,7 +930,7 @@ function revealChoices(){
     }
     const statLine=state.mode==="classic"?'<div class="stat">'+p.stat+'</div>':'';
     el.innerHTML=
-      '<div class="num">'+(idx+1)+'</div>'+
+      '<div class="num">•</div>'+
       '<div class="who"><div class="nm">'+p.name+'</div>'+
         '<div class="meta"><span class="tm">'+p.team+'</span> · '+POSNAME[p.pos]+' · '+p.decade+'</div>'+
         statLine+
@@ -874,7 +1007,9 @@ function computeSeason(){
   let wins=Math.round(17*Math.pow(frac,CURVE.exp));
   wins=Math.max(0,Math.min(17,wins));
   const weakKey=CATKEYS[vals.indexOf(min)];
-  return {totals,norms,wins,losses:17-wins,S,weakKey};
+  const ratings={}; CATKEYS.forEach(k=>ratings[k]=phaseRating(totals[k],k));
+  const teamRating=Math.round(CATKEYS.reduce((s,k)=>s+ratings[k],0)/CATKEYS.length);
+  return {totals,norms,wins,losses:17-wins,S,weakKey,ratings,teamRating};
 }
 
 function runSimulation(){
@@ -914,13 +1049,21 @@ function finishSimulation(res){
   else if(res.wins>=8){verdict=res.wins+"–"+res.losses+" · MIDDLING";line="Talented but lopsided. Your "+CATNAME[res.weakKey].toLowerCase()+" got exposed all year.";}
   else{verdict=res.wins+"–"+res.losses+" · LONG SEASON";line="The talent never came together. Badly short on "+CATNAME[res.weakKey].toLowerCase()+".";}
 
-  let bdHTML='<div class="breakdown"><h4>Phase Breakdown — gold line marks elite</h4>';
+  const strongKey=CATKEYS.reduce((a,b)=>res.ratings[b]>res.ratings[a]?b:a);
+  let bdHTML='<div class="breakdown">'+
+    '<div class="teamrating">'+
+      '<div class="trnum '+ratingTier(res.teamRating)+'">'+res.teamRating+'</div>'+
+      '<div class="trlbl"><span>Team Rating</span><b>'+ratingWord(res.teamRating)+'</b></div>'+
+    '</div>';
   CATKEYS.forEach(k=>{
-    const pct=Math.round(res.norms[k]*100);
+    const rt=res.ratings[k];
     const weak=k===res.weakKey&&!perfect;
+    const cls=weak?"rt-weak":ratingTier(rt);
+    const tag = weak?'<span class="phtag weak">ceiling</span>'
+              : (k===strongKey&&rt>=80)?'<span class="phtag str">strength</span>':'';
     bdHTML+='<div class="bd"><div class="bk">'+CATNAME[k]+'</div>'+
-      '<div class="track'+(weak?" weak":"")+'"><div class="mark" style="left:84%"></div><i data-w="'+Math.min(pct,100)+'"></i></div>'+
-      '<div class="pct">'+pct+'%</div></div>';
+      '<div class="track'+(weak?" weak":"")+'"><i data-w="'+rt+'" class="'+cls+'"></i></div>'+
+      '<div class="pct '+cls+'">'+rt+'</div>'+tag+'</div>';
   });
   bdHTML+='</div>';
 
